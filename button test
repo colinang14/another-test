@@ -1,0 +1,15 @@
+def access_system():
+    correct_code = "1234"  # Define the correct access code
+
+    while True:
+        entered_code = input("Please enter the access code: ")
+
+        if entered_code == correct_code:
+            print("Access granted! Welcome to the system.")
+            # Place the code for your system's functionality here
+            break  # Exit the loop once access is granted
+        else:
+            print("Incorrect code. Please try again.")
+
+# Call the function to start the access system
+access_system()
