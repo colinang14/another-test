@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Sky</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars if stars go beyond viewport */
+            height: 100vh;
+            background: linear-gradient(to bottom, #000000 0%, #0a0a2a 50%, #1a1a4a 100%); /* Dark blue/black gradient */
+            position: relative;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite ease-in-out alternate; /* Twinkling animation */
+        }
+
+        /* Define different star sizes and positions for variety */
+        .star-small {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Subtle glow */
+        }
+
+        .star-medium {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 7px rgba(255, 255, 255, 0.7);
+        }
+
+        .star-large {
+            width: 4px;
+            height: 4px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars will be dynamically added here by JavaScript -->
+    <script>
+        const body = document.body;
+        const numStars = 100; // Number of stars to generate
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Randomly assign star size class
+            const size = Math.random();
+            if (size < 0.6) {
+                star.classList.add('star-small');
+            } else if (size < 0.9) {
+                star.classList.add('star-medium');
+            } else {
+                star.classList.add('star-large');
+            }
+
+            // Set random position
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+
+            // Randomize animation delay for varied twinkling
+            star.style.animationDelay = `${Math.random() * 2}s`;
+
+            body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
